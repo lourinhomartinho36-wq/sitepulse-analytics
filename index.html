@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="SitePulse Analytics: acompanhe o desempenho dos seus websites.">
+  <title>SitePulse Analytics</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px;
+      background: #111a2e;
+      border-bottom: 1px solid #26334d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+
+    .status {
+      font-size: 11px;
+      color: #fbbf24;
+      border: 1px solid #854d0e;
+      border-radius: 20px;
+      padding: 4px 8px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px 16px;
+    }
+
+    .intro {
+      margin-bottom: 25px;
+    }
+
+    .intro h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      color: #94a3b8;
+    }
+
+    .notice {
+      background: #172554;
+      border: 1px solid #1d4ed8;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 24px;
+      color: #bfdbfe;
+      font-size: 13px;
+    }
+
+    .section-title {
+      font-size: 19px;
+      margin-bottom: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: #111a2e;
+      border: 1px solid #26334d;
+      border-radius: 14px;
+      padding: 17px;
+      min-width: 0;
+    }
+
+    .card p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .number {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 8px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    .panel {
+      background: #111a2e;
+      border: 1px solid #26334d;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 24px 8px;
+      color: #94a3b8;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .button:hover {
+      background: #1d4ed8;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid #334155;
+      border-radius: 9px;
+      background: #0b1020;
+      color: white;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #64748b;
+      font-size: 12px;
+      border-top: 1px solid #26334d;
+    }
+
+    @media (min-width: 700px) {
+      .stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .intro h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">SitePulse</div>
+    <span class="status">Modo de demonstração</span>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>O desempenho dos teus sites, num só lugar.</h1>
+      <p>Monitoriza o tráfego, as impressões e a evolução dos teus websites.</p>
+    </section>
+
+    <div class="notice">
+      <strong>Modo de demonstração:</strong>
+      os números deste painel ainda não são dados reais.
+      Liga as fontes de dados para começar a monitorizar os teus sites.
+    </div>
+
+    <h2 class="section-title">Visão geral</h2>
+
+    <section class="stats">
+      <div class="card">
+        <p>Visitantes</p>
+        <div class="number">—</div>
+        <span class="muted">A aguardar dados</span>
+      </div>
+
+      <div class="card">
+        <p>Visualizações</p>
+        <div class="number">—</div>
+        <span class="muted">A aguardar dados</span>
+      </div>
+
+      <div class="card">
+        <p>Impressões Google</p>
+        <div class="number">—</div>
+        <span class="muted">Search Console</span>
+      </div>
+
+      <div class="card">
+        <p>Cliques Google</p>
+        <div class="number">—</div>
+        <span class="muted">Search Console</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Os meus websites</h2>
+      <div id="sites">
+        <div class="empty">
+          <p>Ainda não adicionaste nenhum website.</p>
+          <p class="muted">Adiciona o endereço de um site para começar.</p>
+        </div>
+      </div>
+
+      <form id="siteForm">
+        <label for="siteUrl">Endereço do website</label>
+        <input
+          id="siteUrl"
+          type="url"
+          placeholder="https://exemplo.com"
+          required
+        >
+        <button class="button" type="submit">Adicionar website</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Qualidade do tráfego</h2>
+      <p class="muted">
+        Esta área ficará disponível quando ligarmos as ferramentas
+        de análise. A qualidade do tráfego será avaliada com dados
+        reais e vários indicadores, sem conclusões precipitadas.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2 class="section-title">Desempenho técnico</h2>
+      <p class="muted">
+        Preparamos esta área para futuras verificações de velocidade,
+        acessibilidade e experiência de utilização.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>SitePulse Analytics © 2026</p>
+    <p>Plataforma independente de análise de websites.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("siteForm");
+    const input = document.getElementById("siteUrl");
+    const sitesContainer = document.getElementById("sites");
+
+    let sites = [];
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const address = input.value.trim();
+
+      try {
+        const url = new URL(address);
+
+        if (!["http:", "https:"].includes(url.protocol)) {
+          throw new Error("Endereço inválido");
+        }
+
+        const normalized = url.origin;
+
+        if (sites.includes(normalized)) {
+          alert("Este website já está na lista.");
+          return;
+        }
+
+        sites.push(normalized);
+        renderSites();
+        input.value = "";
+      } catch {
+        alert("Introduz um endereço válido, como https://exemplo.com");
+      }
+    });
+
+    function renderSites() {
+      sitesContainer.innerHTML = "";
+
+      sites.forEach(function(address, index) {
+        const item = document.createElement("div");
+        item.className = "card";
+        item.style.marginBottom = "10px";
+
+        const name = document.createElement("p");
+        name.textContent = address;
+
+        const info = document.createElement("p");
+        info.className = "muted";
+        info.textContent = "Website adicionado neste navegador";
+
+        const remove = document.createElement("button");
+        remove.className = "button";
+        remove.textContent = "Remover";
+        remove.type = "button";
+
+        remove.addEventListener("click", function() {
+          sites.splice(index, 1);
+          renderSites();
+        });
+
+        item.append(name, info, remove);
+        sitesContainer.appendChild(item);
+      });
+    }
+  </script>
+</body>
+  </html>
